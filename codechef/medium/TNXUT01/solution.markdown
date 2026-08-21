@@ -60,3 +60,11 @@ Databases: Independent data storage systems dedicated to each specific microserv
 Message Queue (e.g., Kafka/RabbitMQ): An asynchronous communication broker placed between the Booking and Notification services to prevent slow SMS operations from blocking the checkout process.
 
 External SMS Provider: The third-party API (like Twilio) utilized by the Notification Service to dispatch actual text messages.
+
+Easy diagram flow to remember:
+
+Mobile App → API Gateway → Services → Databases
+
+And:
+
+Booking Service → Message Queue → Notification Service → SMS Provider
