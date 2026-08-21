@@ -27,7 +27,7 @@ TrekGear Rentals is a trekking-gear rental startup in Manali. Everything — log
 **Language:** markdown  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-08-21T17:55:51.929Z  
+**Submitted:** 2026-08-21T17:55:59.918Z  
 
 ```markdown
 1. HLD vs. LLD Classification
@@ -93,6 +93,13 @@ Message Queue (e.g., Kafka/RabbitMQ): An asynchronous communication broker place
 
 External SMS Provider: The third-party API (like Twilio) utilized by the Notification Service to dispatch actual text messages.
 
+Easy diagram flow to remember:
+
+Mobile App → API Gateway → Services → Databases
+
+And:
+
+Booking Service → Message Queue → Notification Service → SMS Provider
 ```
 
 ---
