@@ -27,7 +27,7 @@ TrekGear Rentals is a trekking-gear rental startup in Manali. Everything — log
 **Language:** markdown  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-08-21T17:56:08.480Z  
+**Submitted:** 2026-08-21T17:56:05.321Z  
 
 ```markdown
 1. HLD vs. LLD Classification
@@ -42,7 +42,6 @@ d) LLD - REST API endpoint naming is a detailed coding standard and implementati
 e) HLD - Placing a load balancer dictates the system's infrastructure, scaling strategy, and deployment architecture.
 
 f) LLD - Retry logic is an internal, code-level algorithmic detail within a specific function.
-
 
 
 2. Monolith Failure and Microservices Split
