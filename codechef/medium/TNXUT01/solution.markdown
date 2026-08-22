@@ -12,7 +12,6 @@ e) HLD - Placing a load balancer dictates the system's infrastructure, scaling s
 f) LLD - Retry logic is an internal, code-level algorithmic detail within a specific function.
 
 
-
 2. Monolith Failure and Microservices Split
 Why "just adding more servers" fails:
 
