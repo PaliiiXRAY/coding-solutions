@@ -59,6 +59,7 @@ Rewriting Statement 6 ("reliable"):
 (Alternatively for uptime: "The system must maintain [99.9] [% uptime] [over any rolling 30-day period].")
 
 
+
 3. Uptime and Downtime Calculation
 Maximum downtime per month (30 days):
 
@@ -77,6 +78,8 @@ Total minutes in a year = 365 days × 24 hours × 60 minutes = 525,600 minutes.
 What this means in practice:
 
 The clinic's IT team has a strict limit of roughly 43 minutes total each month to handle all server crashes, bug fixes, and scheduled maintenance; if the system is down longer than that, they have failed their reliability agreement.
+
+
 
 4. Design-Changing Questions for the Founder
 Concurrency Handling: "How should the system behave if two pet owners try to select and book the exact same vet for the exact same time slot simultaneously?"
