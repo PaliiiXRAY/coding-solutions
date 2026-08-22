@@ -27,7 +27,7 @@ TrekGear Rentals is a trekking-gear rental startup in Manali. Everything — log
 **Language:** markdown  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-08-21T17:54:16.004Z  
+**Submitted:** 2026-08-21T17:55:07.473Z  
 
 ```markdown
 1. HLD vs. LLD Classification
@@ -46,25 +46,28 @@ f) LLD - Retry logic is an internal, code-level algorithmic detail within a spec
 
 2. Monolith Failure and Microservices Split
 Why "just adding more servers" fails:
+
 Because TrekGear is a tightly coupled monolith, a slow process (like the SMS service) consumes shared application resources (such as thread pools or memory) across the entire application. Adding more servers behind a load balancer simply replicates the same monolithic code onto new machines. The slow SMS requests will quickly exhaust the resources on the new servers as well, causing them to crash just like the original server. Load balancing distributes traffic but fails to isolate the underlying bottleneck.
 
 Suggested Microservices (grouped by business function):
 
-User Service: Handles registration, login, authentication, and user profiles.
+-User Service: Handles registration, login, authentication, and user profiles.
 
-Catalog Service: Manages trekking gear inventory, item details, and search functionality.
+-Catalog Service: Manages trekking gear inventory, item details, and search functionality.
 
-Booking Service: Manages scheduling, gear availability, and reservations.
+-Booking Service: Manages scheduling, gear availability, and reservations.
 
-Payment Service: Processes financial transactions and tracks payment statuses.
+-Payment Service: Processes financial transactions and tracks payment statuses.
 
-Notification Service: Handles the generation and dispatch of SMS and email confirmations.
+-Notification Service: Handles the generation and dispatch of SMS and email confirmations.
 
 Why this split:
+
 This architecture provides fault isolation. By separating services by business domain, a failure or slowdown in the Notification Service (due to SMS provider delays) will only affect notifications. The Catalog Service remains completely unblocked and independent, allowing users to continue browsing gear without encountering a blank page.
 
 3. Client-Server Architecture Changes
 What needs to change:
+
 The architecture must introduce an API Gateway. The mobile app should point to this single API Gateway URL. The Gateway will intercept all incoming client requests, handle cross-cutting concerns (like authentication and rate limiting), and securely route the request to the appropriate backend microservice.
 
 Why the app should NOT call microservices directly:
