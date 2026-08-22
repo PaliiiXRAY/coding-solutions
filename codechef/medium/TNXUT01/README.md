@@ -27,7 +27,7 @@ TrekGear Rentals is a trekking-gear rental startup in Manali. Everything — log
 **Language:** markdown  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-08-21T17:55:07.473Z  
+**Submitted:** 2026-08-21T17:56:08.480Z  
 
 ```markdown
 1. HLD vs. LLD Classification
@@ -42,6 +42,7 @@ d) LLD - REST API endpoint naming is a detailed coding standard and implementati
 e) HLD - Placing a load balancer dictates the system's infrastructure, scaling strategy, and deployment architecture.
 
 f) LLD - Retry logic is an internal, code-level algorithmic detail within a specific function.
+
 
 
 2. Monolith Failure and Microservices Split
@@ -65,6 +66,8 @@ Why this split:
 
 This architecture provides fault isolation. By separating services by business domain, a failure or slowdown in the Notification Service (due to SMS provider delays) will only affect notifications. The Catalog Service remains completely unblocked and independent, allowing users to continue browsing gear without encountering a blank page.
 
+
+
 3. Client-Server Architecture Changes
 What needs to change:
 
@@ -77,6 +80,8 @@ Tight Coupling: The mobile client would need to hardcode and manage the exact IP
 Security Exposure: It exposes the entire internal network structure and individual service endpoints directly to the public internet.
 
 Network Inefficiency (Chattiness): A single user action on the mobile app might require fetching data from three different services, forcing the client to make three separate high-latency round trips over the internet instead of one call to a Gateway that aggregates the data internally.
+
+
 
 4. Parts of the HLD Diagram
 Mobile App: The client-facing interface where users browse and book gear.
@@ -92,6 +97,14 @@ Databases: Independent data storage systems dedicated to each specific microserv
 Message Queue (e.g., Kafka/RabbitMQ): An asynchronous communication broker placed between the Booking and Notification services to prevent slow SMS operations from blocking the checkout process.
 
 External SMS Provider: The third-party API (like Twilio) utilized by the Notification Service to dispatch actual text messages.
+
+Easy diagram flow to remember:
+
+Mobile App → API Gateway → Services → Databases
+
+And:
+
+Booking Service → Message Queue → Notification Service → SMS Provider
 ```
 
 ---
